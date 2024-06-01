@@ -43,14 +43,4 @@ class Preferences {
     final prefs = await SharedPreferences.getInstance();
     return Color(prefs.getInt(AppConstants.textColorKey) ?? Colors.black.value);
   }
-
-  static Future<void> setImages(String imageUrl) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(AppConstants.imagesKey, imageUrl);
-  }
-
-  static Future<String> getImages() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(AppConstants.imagesKey) ?? "";
-  }
 }

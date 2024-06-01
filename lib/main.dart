@@ -28,7 +28,6 @@ class _MyAppState extends State<MyApp> {
     AppConstants.appBarColor = await Preferences.getAppBarColor();
     AppConstants.fontSize = await Preferences.getFontSize();
     AppConstants.textColor = await Preferences.getTextColor();
-    AppConstants.images = await Preferences.getImages();
     setState(() {});
   }
 
@@ -36,14 +35,6 @@ class _MyAppState extends State<MyApp> {
     await Preferences.setTheme(value);
     AppConstants.themeMode = value ? ThemeMode.dark : ThemeMode.light;
     setState(() {});
-  }
-
-  void backgroundImage(String imageUrl) async {
-    if (imageUrl.trim().isNotEmpty) {
-      await Preferences.setImages(imageUrl);
-      AppConstants.images = imageUrl;
-      setState(() {});
-    }
   }
 
   void appBarColor(Color appBarStyle) async {

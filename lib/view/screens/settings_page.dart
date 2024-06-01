@@ -11,12 +11,12 @@ class SettingsScreen extends StatefulWidget {
   final ValueChanged<Color> onTextColor;
 
   const SettingsScreen({
-    super.key,
+    Key? key,
     required this.onThemeChanged,
     required this.onAppBarColorChanged,
     required this.onTextFontSize,
     required this.onTextColor,
-  });
+  }) : super(key: key);
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -24,18 +24,19 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   Color _currentColor = Colors.blue;
-
-  final imageController = TextEditingController();
   final fontSizeController = TextEditingController();
   String errorMessageFontSize = "";
+
   @override
   void dispose() {
-    imageController.dispose();
+    fontSizeController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       decoration: BoxDecoration(
         image: AppConstants.images.isEmpty
@@ -84,7 +85,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         "Tungi holat",
                         style: TextStyle(
                           fontSize: AppConstants.fontSize,
-                          color: AppConstants.textColor,
+                          color: isDarkMode ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -132,25 +133,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Edit AppBar Color",
+                            "AppBar Color 🔆",
                             style: TextStyle(
                               fontSize: AppConstants.fontSize,
-                              color: AppConstants.textColor,
+                              color: isDarkMode ? Colors.white : Colors.black,
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const SizedBox(height: 20),
-                    Text("Enter FontSize",
-                        style: TextStyle(
-                          fontSize: AppConstants.fontSize,
-                          color: AppConstants.textColor,
-                        )),
+                    const SizedBox(height: 30),
+                    Text(
+                      "Enter FontSize",
+                      style: TextStyle(
+                        fontSize: AppConstants.fontSize,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.only(left: 160, right: 160),
+                      padding: const EdgeInsets.only(left: 120, right: 120),
                       child: TextField(
                         controller: fontSizeController,
                         keyboardType: TextInputType.phone,
@@ -160,7 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           }
                         },
                         decoration: InputDecoration(
-                          fillColor: const Color(0xffF1F1FE),
+                          fillColor: Color.fromARGB(255, 217, 217, 217),
                           filled: true,
                           errorStyle: const TextStyle(color: Colors.red),
                           label: const Column(

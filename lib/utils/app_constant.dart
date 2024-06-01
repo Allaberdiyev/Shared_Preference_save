@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   static ThemeMode themeMode = ThemeMode.light;
-  static Color appBarColor = Color.fromARGB(255, 6, 180, 0);
+  static Color appBarColor = Color.fromARGB(255, 15, 255, 7);
   static double fontSize = 16.0;
   static Color textColor = Colors.black;
   static String images = "";

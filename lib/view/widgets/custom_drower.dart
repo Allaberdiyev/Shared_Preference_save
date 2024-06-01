@@ -20,6 +20,8 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Drawer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +74,7 @@ class CustomDrawer extends StatelessWidget {
               "Bosh sahifa",
               style: TextStyle(
                 fontSize: AppConstants.fontSize,
-                color: AppConstants.textColor,
+                color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
             trailing: const Icon(
@@ -99,7 +101,7 @@ class CustomDrawer extends StatelessWidget {
               "Sozlamalar",
               style: TextStyle(
                 fontSize: AppConstants.fontSize,
-                color: AppConstants.textColor,
+                color: isDarkMode ? Colors.white : Colors.black,
               ),
             ),
             trailing: const Icon(

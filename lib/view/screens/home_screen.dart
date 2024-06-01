@@ -11,7 +11,6 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
     required this.onThemeChanged,
-    
     required this.onAppBarColorChanged,
     required this.onTextFontSize,
     required this.onTextColor,
